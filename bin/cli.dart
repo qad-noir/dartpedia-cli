@@ -16,7 +16,7 @@ void main(List<String> arguments) {
   }
 }
 
-void searchWikipedia(List<String>? arguments) {
+void searchWikipedia(List<String>? arguments) async {
   final String articleTitle;
 
   if (arguments == null || arguments.isEmpty) {
