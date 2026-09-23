@@ -37,3 +37,7 @@ void printUsage() {
     "The following commands are valid: 'help', 'version', 'search <ARTICLE-TITLE>'",
   );
 }
+
+Future<String> getWikipediaArticle(String articleTitle) async {
+  
+}
