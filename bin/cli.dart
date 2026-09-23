@@ -43,4 +43,12 @@ Future<String> getWikipediaArticle(String articleTitle) async {
     'en.wikipedia.org',
     '/api/rest_v1/page/summary/$articleTitle'
   );
+
+  final response = await http.get(url);
+
+  if(response.statusCode == 200){
+    return response.body;
+  }
+
+  return 'Error: Failed to fetch article "$articleTitle". Status code: ${response.statusCode}';
 }
