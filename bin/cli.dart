@@ -39,5 +39,8 @@ void printUsage() {
 }
 
 Future<String> getWikipediaArticle(String articleTitle) async {
-  
+  final url = Uri.https(
+    'en.wikipedia.org',
+    '/api/rest_v1/page/summary/$articleTitle'
+  );
 }
