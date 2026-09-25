@@ -70,6 +70,13 @@ abstract class Command extends CliElement {
       ),
     );
   }
+
+  FutureOr<Object?> run(ArgResults args);
+
+  @override
+  String get usage {
+    return '$name:  $description';
+  }
 }
 
 class Option extends CliElement {
