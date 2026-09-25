@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:http/http.dart' as http;
 
-import '../model/summary.dart';
+import '../src/model/summary.dart';
 
 Future<Summary> getRandomArticleSummary() async {
   final http.Client client = http.Client();
