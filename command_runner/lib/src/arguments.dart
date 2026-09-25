@@ -112,7 +112,7 @@ class Option extends CliElement {
 }
 
 class ArgResults {
-  String? command;
+  Command? command;
   String? commandArg;
   Map<Option, Object?> options = {};
 
