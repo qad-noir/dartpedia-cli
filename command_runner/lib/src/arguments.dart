@@ -1,3 +1,7 @@
+import 'dart:async';
+import 'dart:collection';
+import 'command_runner_base.dart';
+
 enum OptionType { flag, option }
 
 abstract class CliElement {
@@ -9,6 +13,27 @@ abstract class CliElement {
 
   String get usage;
 }
+
+abstract class Command extends CliElement {
+  @override
+  String get name;
+
+  String get description;
+
+  bool get requiresArgument => false;
+
+  late CommandRunner runner;
+
+  @override
+  String? help;
+
+  @override
+  String? defaultValue;
+
+  @override
+  String? valueHelp;
+}
+
 
 class Option extends CliElement {
   Option(
