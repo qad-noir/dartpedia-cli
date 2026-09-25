@@ -22,7 +22,11 @@ class CommandRunner {
       final ArgResults results = parse(input);
       if (results.command != null) {
         Object? output = await results.command!.run(results);
-        print(output.toString());
+        if (onOutput != null) {
+          await onOutput!(output.toString());
+        } else {
+          print(output.toString());
+        }
       }
     } on Exception catch (exception) {
       if (onError != null) {
