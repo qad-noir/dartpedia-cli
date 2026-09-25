@@ -48,4 +48,33 @@ enum ConsoleColor {
   final int r;
   final int g;
   final int b;
+
+  /// Change text color for all future output (until reset)
+  /// ```dart
+  /// print('hello'); // prints in terminal default color
+  /// print(ConsoleColor.red.enableForeground);
+  /// print('hello'); // prints in red color
+  /// ```
+  String get enableForeground => '$ansiEscapeLiteral[38;2;$r;$g;${b}m';
+
+  /// Change text color for all future output (until reset)
+  /// ```dart
+  /// print('hello'); // prints in terminal default color
+  /// print(ConsoleColor.red.enableBackground);
+  /// print('hello'); // prints with red background color
+  /// ```
+  String get enableBackground => '$ansiEscapeLiteral[48;2;$r;$g;${b}m';
+
+  /// Reset text and background color to terminal defaults
+  static String get reset => '$ansiEscapeLiteral[0m';
+
+  /// Sets text color for the input
+  String applyForeground(String text) {
+    return '$ansiEscapeLiteral[38;2;$r;$g;${b}m$text$reset';
+  }
+
+  /// Sets background color and then resets the color change
+  String applyBackground(String text) {
+    return '$ansiEscapeLiteral[48;2;$r;$g;${b}m$text$ansiEscapeLiteral[0m';
+  }
 }
